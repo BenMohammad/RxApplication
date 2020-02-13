@@ -23,6 +23,4 @@ public class Repo {
         this.stars = stars;
         this.forks = forks;
     }
-
-
 }
