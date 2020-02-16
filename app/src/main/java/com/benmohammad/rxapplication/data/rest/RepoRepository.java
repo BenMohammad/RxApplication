@@ -12,6 +12,7 @@ public class RepoRepository {
 
     private final RepoService repoService;
 
+    @Inject
     public RepoRepository(RepoService repoService) {
         this.repoService = repoService;
     }

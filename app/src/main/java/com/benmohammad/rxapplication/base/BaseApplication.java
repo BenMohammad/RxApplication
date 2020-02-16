@@ -1,7 +1,10 @@
 package com.benmohammad.rxapplication.base;
 
+import com.benmohammad.rxapplication.di.component.ApplicationComponent;
+import com.benmohammad.rxapplication.di.component.DaggerApplicationComponent;
+
 import dagger.android.AndroidInjector;
-import dagger.android.support.DaggerApplication;
+import dagger.android.DaggerApplication;
 
 public class BaseApplication extends DaggerApplication {
 
@@ -12,6 +15,8 @@ public class BaseApplication extends DaggerApplication {
 
     @Override
     protected AndroidInjector<? extends DaggerApplication> applicationInjector() {
-        return null;
+        ApplicationComponent component  = DaggerApplicationComponent.builder().application(this).build();
+        component.inject(this);
+        return component;
     }
 }

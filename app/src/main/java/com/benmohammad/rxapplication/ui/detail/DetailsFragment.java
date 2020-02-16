@@ -49,14 +49,14 @@ public class DetailsFragment extends BaseFragment {
     }
 
     private void displayRepo() {
-        detailsViewModel.getSelectedRepo().observe(this, repo -> {
-            if(repo != null) {
-                repoNameTextView.setText(repo.name);
-                repoDescriptionTextView.setText(repo.description);
-                forksTextView.setText(String.valueOf(repo.forks));
-                starsTextView.setText(String.valueOf(repo.stars));
-            }
-        });
+//        detailsViewModel.getSelectedRepo().observe(this, repo -> {
+//            if(repo != null) {
+//                repoNameTextView.setText(repo.name);
+//                repoDescriptionTextView.setText(repo.description);
+//                forksTextView.setText(String.valueOf(repo.forks));
+//                starsTextView.setText(String.valueOf(repo.stars));
+//            }
+//        });
     }
 
     @Override

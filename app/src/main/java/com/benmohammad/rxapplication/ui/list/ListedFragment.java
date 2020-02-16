@@ -40,13 +40,7 @@ public class ListedFragment extends BaseFragment implements RepoSelectedListener
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        listViewModel = ViewModelProviders.of(this, viewModelFactory).get(ListViewModel.class);
-        listView.addItemDecoration(new DividerItemDecoration(getBaseActivity(), DividerItemDecoration.VERTICAL));
-        listView.setAdapter(new RepoListAdapter(listViewModel, this, this));
-        listView.setLayoutManager(new LinearLayoutManager(getContext()));
 
-
-        observableViewModel();
     }
 
     @Override
@@ -58,37 +52,37 @@ public class ListedFragment extends BaseFragment implements RepoSelectedListener
     public void onRepoSelected(Repo repo) {
         DetailsViewModel detailsViewModel = ViewModelProviders.of(getBaseActivity(), viewModelFactory).get(DetailsViewModel.class);
         detailsViewModel.setSelectedRepo(repo);
-        getBaseActivity().getSupportFragmentManager().beginTransaction().replace(R.id.screenContainer, new DetailsFragment())
+        getBaseActivity().getFragmentManager().beginTransaction().replace(R.id.screenContainer, new DetailsFragment())
                 .addToBackStack(null).commit();
     }
 
     private void observableViewModel() {
-        listViewModel.getRepos().observe(this, repos -> {
-            if(repos != null) {
-                listView.setVisibility(View.VISIBLE);
-            }
-        });
-
-        listViewModel.getError().observe(this, isError -> {
-             if(isError != null) {
-                 errorTextView.setVisibility(View.VISIBLE);
-                 listView.setVisibility(View.GONE);
-                 errorTextView.setText("An Error happened");
-             } else {
-                 errorTextView.setVisibility(View.GONE);
-                 errorTextView.setText(null);
-             }
-        });
-
-        listViewModel.getLoading().observe(this, isLoading -> {
-            if(isLoading != null) {
-                loadingView.setVisibility(isLoading ? View.VISIBLE : View.GONE);
-                if(isLoading) {
-                    errorTextView.setVisibility(View.GONE);
-                    listView.setVisibility(View.GONE);
-                }
-            }
-        });
+//        listViewModel.getRepos().observe(this, repos -> {
+//            if(repos != null) {
+//                listView.setVisibility(View.VISIBLE);
+//            }
+//        });
+//
+//        listViewModel.getError().observe(this, isError -> {
+//             if(isError != null) {
+//                 errorTextView.setVisibility(View.VISIBLE);
+//                 listView.setVisibility(View.GONE);
+//                 errorTextView.setText("An Error happened");
+//             } else {
+//                 errorTextView.setVisibility(View.GONE);
+//                 errorTextView.setText(null);
+//             }
+//        });
+//
+//        listViewModel.getLoading().observe(this, isLoading -> {
+//            if(isLoading != null) {
+//                loadingView.setVisibility(isLoading ? View.VISIBLE : View.GONE);
+//                if(isLoading) {
+//                    errorTextView.setVisibility(View.GONE);
+//                    listView.setVisibility(View.GONE);
+//                }
+//            }
+//        });
     }
 
 }

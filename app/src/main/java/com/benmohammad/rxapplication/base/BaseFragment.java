@@ -13,7 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
-import dagger.android.support.DaggerFragment;
+import dagger.android.DaggerFragment;
 
 public abstract class BaseFragment extends DaggerFragment {
 
