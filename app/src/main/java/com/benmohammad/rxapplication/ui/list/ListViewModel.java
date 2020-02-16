@@ -9,6 +9,8 @@ import com.benmohammad.rxapplication.data.rest.RepoRepository;
 
 import java.util.List;
 
+import javax.inject.Inject;
+
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.observers.DisposableSingleObserver;
@@ -23,6 +25,7 @@ public class ListViewModel extends ViewModel {
     private final MutableLiveData<Boolean> repoLoadError =new MutableLiveData<>();
     private final MutableLiveData<Boolean> loading =new MutableLiveData<>();
 
+    @Inject
     public ListViewModel(RepoRepository repoRepository) {
         this.repoRepository = repoRepository;
         disposable = new CompositeDisposable();
