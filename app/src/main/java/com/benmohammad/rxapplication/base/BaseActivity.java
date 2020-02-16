@@ -6,9 +6,9 @@ import androidx.annotation.LayoutRes;
 import androidx.annotation.Nullable;
 
 import butterknife.ButterKnife;
-import dagger.android.DaggerActivity;
+import dagger.android.support.DaggerAppCompatActivity;
 
-public abstract class BaseActivity extends DaggerActivity {
+public abstract class BaseActivity extends DaggerAppCompatActivity {
 
     @LayoutRes
     protected abstract int layoutRes();

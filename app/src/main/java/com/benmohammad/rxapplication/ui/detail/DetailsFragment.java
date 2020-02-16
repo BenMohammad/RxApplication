@@ -6,6 +6,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.benmohammad.rxapplication.R;
@@ -38,7 +39,7 @@ public class DetailsFragment extends BaseFragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         detailsViewModel = ViewModelProviders.of(getBaseActivity(), viewModelFactory).get(DetailsViewModel.class);
-        detailsViewModel.restorFromBundle(savedInstanceState);
+        detailsViewModel.restoreFromBundle(savedInstanceState);
         displayRepo();
     }
 
@@ -49,14 +50,14 @@ public class DetailsFragment extends BaseFragment {
     }
 
     private void displayRepo() {
-//        detailsViewModel.getSelectedRepo().observe(this, repo -> {
-//            if(repo != null) {
-//                repoNameTextView.setText(repo.name);
-//                repoDescriptionTextView.setText(repo.description);
-//                forksTextView.setText(String.valueOf(repo.forks));
-//                starsTextView.setText(String.valueOf(repo.stars));
-//            }
-//        });
+        detailsViewModel.getSelectedRepo().observe((LifecycleOwner) this, repo -> {
+            if(repo != null) {
+                repoNameTextView.setText(repo.name);
+                repoDescriptionTextView.setText(repo.description);
+                forksTextView.setText(String.valueOf(repo.forks));
+                starsTextView.setText(String.valueOf(repo.stars));
+            }
+        });
     }
 
     @Override

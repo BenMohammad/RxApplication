@@ -47,7 +47,7 @@ public class DetailsViewModel extends ViewModel {
         }
     }
 
-    public void restorFromBundle(Bundle savedInstanceState) {
+    public void restoreFromBundle(Bundle savedInstanceState) {
         if(selectedRepo.getValue() == null) {
             if(savedInstanceState != null && savedInstanceState.containsKey("repo_details")) {
                 loadRepo(savedInstanceState.getStringArray("repo_details"));

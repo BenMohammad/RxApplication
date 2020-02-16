@@ -1,5 +1,6 @@
 package com.benmohammad.rxapplication.base;
 
+import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,6 +11,8 @@ import androidx.annotation.LayoutRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.benmohammad.rxapplication.di.component.ApplicationComponent;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
@@ -26,7 +29,7 @@ public abstract class BaseFragment extends DaggerFragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(layoutRes(), container, false);
+        View view = inflater.inflate(layoutRes(), container);
         unbinder = ButterKnife.bind(this, view);
         return view;
     }
