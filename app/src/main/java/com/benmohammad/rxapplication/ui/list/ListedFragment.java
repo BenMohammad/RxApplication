@@ -8,11 +8,16 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.FragmentActivity;
 import androidx.lifecycle.LifecycleOwner;
+import androidx.lifecycle.ViewModelProviders;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.benmohammad.rxapplication.R;
 import com.benmohammad.rxapplication.base.BaseFragment;
 import com.benmohammad.rxapplication.data.model.Repo;
+import com.benmohammad.rxapplication.ui.detail.DetailsFragment;
+import com.benmohammad.rxapplication.ui.detail.DetailsViewModel;
 import com.benmohammad.rxapplication.util.ViewModelFactory;
 
 import javax.inject.Inject;
@@ -37,7 +42,7 @@ public class ListedFragment extends BaseFragment implements RepoSelectedListener
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-
+        listViewModel = ViewModelProviders.of(this, viewModelFactory).get(ListViewModel.class);
     }
 
     @Override
@@ -47,10 +52,10 @@ public class ListedFragment extends BaseFragment implements RepoSelectedListener
 
     @Override
     public void onRepoSelected(Repo repo) {
-//        DetailsViewModel detailsViewModel = ViewModelProviders.of(getBaseActivity(), viewModelFactory).get(DetailsViewModel.class);
-//        detailsViewModel.setSelectedRepo(repo);
-//        getBaseActivity().getFragmentManager().beginTransaction().replace(R.id.screenContainer, new DetailsFragment())
-//                .addToBackStack(null).commit();
+        DetailsViewModel detailsViewModel = ViewModelProviders.of(getBaseActivity(), viewModelFactory).get(DetailsViewModel.class);
+        detailsViewModel.setSelectedRepo(repo);
+        getBaseActivity().getFragmentManager().beginTransaction().replace(R.id.screenContainer, new DetailsFragment())
+                .addToBackStack(null).commit();
     }
 
     private void observableViewModel() {

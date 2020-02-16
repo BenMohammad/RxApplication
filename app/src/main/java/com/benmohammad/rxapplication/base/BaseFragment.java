@@ -29,7 +29,7 @@ public abstract class BaseFragment extends DaggerFragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(layoutRes(), container);
+        View view = inflater.inflate(layoutRes(), container, false);
         unbinder = ButterKnife.bind(this, view);
         return view;
     }
