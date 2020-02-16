@@ -1,6 +1,7 @@
 package com.benmohammad.rxapplication.ui.main;
 
 
+
 import com.benmohammad.rxapplication.ui.detail.DetailsFragment;
 import com.benmohammad.rxapplication.ui.list.ListedFragment;
 

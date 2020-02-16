@@ -11,13 +11,15 @@ import javax.inject.Singleton;
 
 import dagger.BindsInstance;
 import dagger.Component;
+import dagger.Provides;
+import dagger.android.AndroidInjectionModule;
 import dagger.android.AndroidInjector;
-import dagger.android.DaggerApplication;
-import dagger.android.support.AndroidSupportInjectionModule;
+import dagger.android.support.DaggerApplication;
 
 @Singleton
-@Component(modules = {ContextModule.class, ApplicationModule.class, AndroidSupportInjectionModule.class, ActivityBindingModule.class})
+@Component(modules = {ContextModule.class, ApplicationModule.class, AndroidInjectionModule.class, ActivityBindingModule.class})
 public interface ApplicationComponent extends AndroidInjector<DaggerApplication> {
+
 
     void inject(BaseApplication application);
 

@@ -1,8 +1,5 @@
 package com.benmohammad.rxapplication.base;
 
-
-import com.benmohammad.rxapplication.di.component.ApplicationComponent;
-
 import dagger.android.AndroidInjector;
 import dagger.android.support.DaggerApplication;
 
