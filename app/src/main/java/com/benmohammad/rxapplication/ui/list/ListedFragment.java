@@ -6,7 +6,6 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.FragmentActivity;
 import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.DividerItemDecoration;
@@ -38,11 +37,17 @@ public class ListedFragment extends BaseFragment implements RepoSelectedListener
     @Inject
     ViewModelFactory viewModelFactory;
 
-    private ListViewModel listViewModel;
+    private ListViewModel viewModel;
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        listViewModel = ViewModelProviders.of(this, viewModelFactory).get(ListViewModel.class);
+        viewModel = ViewModelProviders.of(getBaseActivity(), viewModelFactory).get(ListViewModel.class);
+        listView.addItemDecoration(new DividerItemDecoration(getBaseActivity(), DividerItemDecoration.VERTICAL));
+        listView.setAdapter(new RepoListAdapter(viewModel, getBaseActivity(),  this));
+        listView.setLayoutManager(new LinearLayoutManager(getBaseActivity()));
+
+        observableViewModel();
+
     }
 
     @Override
@@ -59,13 +64,13 @@ public class ListedFragment extends BaseFragment implements RepoSelectedListener
     }
 
     private void observableViewModel() {
-        listViewModel.getRepos().observe((LifecycleOwner) this, repos -> {
+        viewModel.getRepos().observe( getBaseActivity(), repos -> {
             if(repos != null) {
                 listView.setVisibility(View.VISIBLE);
             }
         });
 
-        listViewModel.getError().observe((LifecycleOwner) this, isError -> {
+        viewModel.getError().observe(getBaseActivity(), isError -> {
              if(isError != null) {
                  errorTextView.setVisibility(View.VISIBLE);
                  listView.setVisibility(View.GONE);
@@ -76,7 +81,7 @@ public class ListedFragment extends BaseFragment implements RepoSelectedListener
              }
         });
 
-        listViewModel.getLoading().observe((LifecycleOwner) this, isLoading -> {
+        viewModel.getLoading().observe(getBaseActivity(), isLoading -> {
             if(isLoading != null) {
                 loadingView.setVisibility(isLoading ? View.VISIBLE : View.GONE);
                 if(isLoading) {

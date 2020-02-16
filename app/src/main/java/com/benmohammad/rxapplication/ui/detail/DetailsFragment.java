@@ -50,7 +50,7 @@ public class DetailsFragment extends BaseFragment {
     }
 
     private void displayRepo() {
-        detailsViewModel.getSelectedRepo().observe((LifecycleOwner) this, repo -> {
+        detailsViewModel.getSelectedRepo().observe(getBaseActivity(), repo -> {
             if(repo != null) {
                 repoNameTextView.setText(repo.name);
                 repoDescriptionTextView.setText(repo.description);
