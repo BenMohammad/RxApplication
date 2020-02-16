@@ -18,7 +18,7 @@ import butterknife.BindView;
 
 public class DetailsFragment extends BaseFragment {
 
-    @BindView(R.id.tv_repo_name)
+    @BindView(R.id.tv_repo_name )
     TextView repoNameTextView;
 
     @BindView(R.id.tv_repo_description)
