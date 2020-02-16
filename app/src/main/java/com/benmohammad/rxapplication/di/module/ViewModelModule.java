@@ -1,5 +1,6 @@
 package com.benmohammad.rxapplication.di.module;
 
+import androidx.core.view.ViewCompat;
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;

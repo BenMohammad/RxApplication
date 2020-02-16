@@ -3,6 +3,8 @@ package com.benmohammad.rxapplication.di.module;
 import android.app.Application;
 import android.content.Context;
 
+import javax.inject.Singleton;
+
 import dagger.Binds;
 import dagger.Module;
 

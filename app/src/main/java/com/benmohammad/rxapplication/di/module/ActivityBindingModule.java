@@ -7,10 +7,9 @@ import com.benmohammad.rxapplication.ui.main.MainFragmentBindingModule;
 
 import javax.inject.Singleton;
 
-import dagger.Component;
 import dagger.Module;
 import dagger.android.ContributesAndroidInjector;
-import dagger.android.support.AndroidSupportInjectionModule;
+
 
 @Module
 public abstract class ActivityBindingModule {
